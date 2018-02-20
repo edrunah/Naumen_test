@@ -18,6 +18,8 @@ public class MachuPikchuNavigator implements Navigator {
         }
         int rows = map.length;
         int columns = map[0].length;
+        int[] dx = {-1,  0, 0, 1};
+        int[] dy = { 0, -1, 1, 0};
 
         //обход массива в ширину
         char [][] map1 = new char[rows][columns];
@@ -37,11 +39,9 @@ public class MachuPikchuNavigator implements Navigator {
             if (currentNode == null) {
                 return null; // если очередь пуста, а выход не найден
             }
-            for (int dx = -1; dx <= 1; dx++) {
-                for (int dy = -1; dy <= 1; dy++) {
-                    if (dx != 0 && dy != 0 || dx == 0 && dy == 0) continue;
-                    int newX = currentNode.getX() + dx;
-                    int newY = currentNode.getY() + dy;
+            for (int i = 0; i < 4; i++) {
+                    int newX = currentNode.getX() + dx[i];
+                    int newY = currentNode.getY() + dy[i];
                     boolean outOfMap = newX < 0 || newY < 0 || newX > rows - 1 || newY > columns - 1;
                     if (outOfMap) continue;
 
@@ -56,9 +56,8 @@ public class MachuPikchuNavigator implements Navigator {
                     }
                     if (map1[newX][newY] == 'X') {
                         endNode.setPreviousNode(currentNode);
-                        dx = dy = 2;
+                        i = 4;
                     }
-                }
             }
         }
 
