@@ -1,30 +1,43 @@
-public class Node {
+public class Node implements Comparable<Node>{
 
     private int x;
 
     private int y;
 
-    private Node previousNode;
+    private Node parentNode;
 
-    Node(int x, int y) {
+    private int g; //Manhattan method
+
+    private int h; //Manhattan method
+
+    private int f; //Manhattan method
+
+    Node(int x, int y, int g, int h) {
         this.x = x;
         this.y = y;
+        this.g = g;
+        this.h = h;
+        this.f = g + h;
     }
 
     public int getX() {
         return x;
     }
 
-    public  int getY() {
+    public int getY() {
         return y;
     }
 
-    public Node getPreviousNode() {
-        return previousNode;
+    public Node getParentNode() {
+        return parentNode;
     }
 
-    public void setPreviousNode(Node previousNode) {
-        this.previousNode = previousNode;
+    public int getG() {
+        return  g;
+    }
+
+    public void setParentNode(Node parentNode) {
+        this.parentNode = parentNode;
     }
 
     @Override
@@ -32,4 +45,8 @@ public class Node {
         return "Узел " + x + "," + y;
     }
 
+    @Override
+    public int compareTo(Node anotherNode) {
+        return Integer.compare(this.f, anotherNode.f);
+    }
 }

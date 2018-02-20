@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class MachuPikchuNavigator implements Navigator {
@@ -18,46 +18,45 @@ public class MachuPikchuNavigator implements Navigator {
         }
         int rows = map.length;
         int columns = map[0].length;
-        int[] dx = {-1,  0, 0, 1};
-        int[] dy = { 0, -1, 1, 0};
 
-        //обход массива в ширину
+        //обход массива методом A*
         char [][] map1 = new char[rows][columns];
         for(int i = 0; i < rows; i++) {
             map1[i] = map[i].clone();
         }
+        Node beginNode = new Node(beginX, beginY, 0 , 0);
+        beginNode.setParentNode(null);
+        Node endNode = new Node(endX, endY, 0, 0);
 
-        Node beginNode = new Node(beginX, beginY);
-        beginNode.setPreviousNode(null);
-        Node endNode = new Node(endX, endY);
+        Queue<Node> queue = new PriorityQueue<>();
+        queue.add(beginNode);
 
-        Queue<Node> wayQueue = new LinkedList<>();
-        wayQueue.add(beginNode);
-
-        while(endNode.getPreviousNode() == null) {
-            Node currentNode = wayQueue.poll();
-            if (currentNode == null) {
-                return null; // если очередь пуста, а выход не найден
+        int[] dx = {-1,  0, 0, 1};
+        int[] dy = { 0, -1, 1, 0};
+        while(endNode.getParentNode() == null) {
+            if (queue.isEmpty()) {
+                return null; // если открытый список пуст, а выход не найден
             }
+            Node currentNode = queue.poll();
+            map1[currentNode.getX()][currentNode.getY()] = 'c';
             for (int i = 0; i < 4; i++) {
-                    int newX = currentNode.getX() + dx[i];
-                    int newY = currentNode.getY() + dy[i];
-                    boolean outOfMap = newX < 0 || newY < 0 || newX > rows - 1 || newY > columns - 1;
-                    if (outOfMap) continue;
+                int newX = currentNode.getX() + dx[i];
+                int newY = currentNode.getY() + dy[i];
+                boolean outOfMap = newX < 0 || newY < 0 || newX > rows - 1 || newY > columns - 1;
+                if (outOfMap) continue;
 
-                    if (map1[newX][newY] == '.') {
-                        Node newNode = new Node(newX, newY);
-                        map1[newX][newY] = 'N';
-                        newNode.setPreviousNode(currentNode);
-                        wayQueue.add(newNode);
-                    }
-                    if (map1[newX][newY] == 'N') {
-                        continue;
-                    }
-                    if (map1[newX][newY] == 'X') {
-                        endNode.setPreviousNode(currentNode);
-                        i = 4;
-                    }
+                if (map1[newX][newY] == '.') {
+                    map1[newX][newY] = 'o';
+                    int g = currentNode.getG() + 1;
+                    int h = Math.abs(endX - newX) + Math.abs(endY - newY);
+                    Node newOpenNode = new Node(newX, newY, g, h);
+                    newOpenNode.setParentNode(currentNode);
+                    queue.add(newOpenNode);
+                }
+                if (map1[newX][newY] == 'X') {
+                    endNode.setParentNode(currentNode);
+                    break;
+                }
             }
         }
 
@@ -66,27 +65,24 @@ public class MachuPikchuNavigator implements Navigator {
         for(int i = 0; i < rows; i++) {
             mapOfPluses[i] = map[i].clone();
         }
-
-        Node plusNode = endNode.getPreviousNode();
+        Node plusNode = endNode.getParentNode();
         while (plusNode != beginNode) {
             mapOfPluses[plusNode.getX()][plusNode.getY()] = '+';
-            plusNode = plusNode.getPreviousNode();
+            plusNode = plusNode.getParentNode();
         }
         return mapOfPluses;
     }
 
-
-//
-//    private void printArr(char[][] arr) {
-//        int rows = arr.length;
-//        int columns = arr[0].length;
-//        for(int i = 0; i < rows; i++) {
-//            for(int j = 0; j < columns; j++) {
-//                System.out.print(arr[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-//    }
+    private void printArr(char[][] arr) {
+        int rows = arr.length;
+        int columns = arr[0].length;
+        for(int i = 0; i < rows; i++) {
+            for(int j = 0; j < columns; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 
     private int[] searchForChar(char[][] arr, char symbol) {
         int rows = arr.length;

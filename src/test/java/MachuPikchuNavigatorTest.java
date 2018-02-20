@@ -8,6 +8,8 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -92,15 +94,7 @@ public class MachuPikchuNavigatorTest {
         };
         printArr(clearField);
 
-        long timeOfWork = 0;
         char[][] route = navigator.searchRoute(clearField);
-        for(int i = 0; i < 30000; i++) {
-            long startTime = System.nanoTime();
-            route = navigator.searchRoute(clearField);
-            timeOfWork += System.nanoTime() - startTime;
-        }
-        System.out.println("Время работы: " + timeOfWork/30000 + " нс");
-
         printArr(route);
     }
 
@@ -118,6 +112,28 @@ public class MachuPikchuNavigatorTest {
         printArr(simple);
 
         char[][] route = navigator.searchRoute(simple);
+        printArr(route);
+    }
+
+    @Test
+    public void snakeTest() {
+        char[][] snake = {
+            {'X', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.'},
+            {'.', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '.'},
+            {'.', '#', '.', '.', '.', '#', '.', '.', '.', '#', '.', '.', '.', '#', '.', '.', '.'},
+            {'.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.'},
+            {'.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.'},
+            {'.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.'},
+            {'.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.'},
+            {'.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.'},
+            {'.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.'},
+            {'.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.'},
+            {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '@', '#', '.'}
+
+        };
+        printArr(snake);
+
+        char[][] route = navigator.searchRoute(snake);
         printArr(route);
     }
 
@@ -172,5 +188,25 @@ public class MachuPikchuNavigatorTest {
         }
         double avgTime = (double) totalTime / (n * 1000000);
         System.out.println("Время выполнения " + avgTime + " мс");
+    }
+
+    @Test
+    public void sortedSetTest() {
+        SortedSet<Node> countrySet = new TreeSet<>();
+        Node n = new Node (0,0, 10, 1);
+        countrySet.add(n);
+        n = new Node (0,1, 9, 1);
+        countrySet.add(n);
+        n = new Node (0,2, 8, 1);
+        countrySet.add(n);
+        n = new Node (0,3, 7, 1);
+        countrySet.add(n);
+        n = new Node (0,4, 6, 1);
+        countrySet.add(n);
+        n = new Node (0,5, 5, 1);
+        countrySet.add(n);
+
+
+        System.out.println(countrySet.toString());
     }
 }
