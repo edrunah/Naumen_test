@@ -31,7 +31,7 @@ public class MachuPikchuNavigatorTest {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         navigator = new MachuPikchuNavigator();
     }
 
@@ -84,7 +84,7 @@ public class MachuPikchuNavigatorTest {
     }
 
     @Test
-    public void clearFieldTest() {
+    public void clearFieldRoute() {
         char[][] clearField = {
             {'.', '.', '.', '.', '@'},
             {'.', '.', '.', '.', '.'},
@@ -99,8 +99,8 @@ public class MachuPikchuNavigatorTest {
     }
 
     @Test
-    public void simpleTest() {
-        char[][] simple = {
+    public void crossRoute() {
+        char[][] cross = {
             {'.', '#', '.', '#', '.'},
             {'.', '#', '.', '#', '.'},
             {'#', '#', '.', '#', '#'},
@@ -109,14 +109,14 @@ public class MachuPikchuNavigatorTest {
             {'.', '#', '.', '#', '.'},
             {'.', '.', '.', '.', '.'}
         };
-        printArr(simple);
+        printArr(cross);
 
-        char[][] route = navigator.searchRoute(simple);
+        char[][] route = navigator.searchRoute(cross);
         printArr(route);
     }
 
     @Test
-    public void snakeTest() {
+    public void snakeRoute() {
         char[][] snake = {
             {'X', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.'},
             {'.', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '.'},
@@ -140,19 +140,19 @@ public class MachuPikchuNavigatorTest {
     @Ignore
     @Test
     public void generateRandomMap() throws IOException {
-//        char[][] map = new RandomMap().generateMap();
-//        printArr(map);
-//        char[][] route = navigator.searchRoute(map);
-//        printArr(route);
-//        if (route != null) {
-//            Writer wr = new FileWriter("randomMap.txt");
-//            for (int i = 0; i < map.length; i++) {
-//                String str = new String(map[i]) + "\n";
-//                wr.write(str);
-//            }
-//            wr.flush();
-//            wr.close();
-//        }
+        char[][] map = new RandomMap().generateMap();
+        printArr(map);
+        char[][] route = navigator.searchRoute(map);
+        printArr(route);
+        if (route != null) {
+            Writer wr = new FileWriter("randomMap.txt");
+            for (int i = 0; i < map.length; i++) {
+                String str = new String(map[i]) + "\n";
+                wr.write(str);
+            }
+            wr.flush();
+            wr.close();
+        }
 
     }
 
@@ -188,25 +188,5 @@ public class MachuPikchuNavigatorTest {
         }
         double avgTime = (double) totalTime / (n * 1000000);
         System.out.println("Время выполнения " + avgTime + " мс");
-    }
-
-    @Test
-    public void sortedSetTest() {
-        SortedSet<Node> countrySet = new TreeSet<>();
-        Node n = new Node (0,0, 10, 1);
-        countrySet.add(n);
-        n = new Node (0,1, 9, 1);
-        countrySet.add(n);
-        n = new Node (0,2, 8, 1);
-        countrySet.add(n);
-        n = new Node (0,3, 7, 1);
-        countrySet.add(n);
-        n = new Node (0,4, 6, 1);
-        countrySet.add(n);
-        n = new Node (0,5, 5, 1);
-        countrySet.add(n);
-
-
-        System.out.println(countrySet.toString());
     }
 }

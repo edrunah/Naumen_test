@@ -1,39 +1,32 @@
 public class Node implements Comparable<Node>{
 
-    private int x;
-
-    private int y;
+    private Point point;
 
     private Node parentNode;
 
-    private int g; //Manhattan method
+    private int distanceFromStart; //Manhattan method
 
-    private int h; //Manhattan method
+    private int distanceToFinish;
 
-    private int f; //Manhattan method
+    private int summaryDistance;
 
-    Node(int x, int y, int g, int h) {
-        this.x = x;
-        this.y = y;
-        this.g = g;
-        this.h = h;
-        this.f = g + h;
+    Node(Point point, int distanceFromStart, int distanceToFinish) {
+        this.point = point;
+        this.distanceFromStart = distanceFromStart;
+        this.distanceToFinish = distanceToFinish;
+        this.summaryDistance = distanceFromStart + distanceToFinish;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public Point getPoint() {
+        return point;
     }
 
     public Node getParentNode() {
         return parentNode;
     }
 
-    public int getG() {
-        return  g;
+    public int getDistanceFromStart() {
+        return distanceFromStart;
     }
 
     public void setParentNode(Node parentNode) {
@@ -42,11 +35,11 @@ public class Node implements Comparable<Node>{
 
     @Override
     public String toString() {
-        return "Узел " + x + "," + y;
+        return "Узел " + point.getX() + "," + point.getY();
     }
 
     @Override
     public int compareTo(Node anotherNode) {
-        return Integer.compare(this.f, anotherNode.f);
+        return Integer.compare(this.summaryDistance, anotherNode.summaryDistance);
     }
 }
