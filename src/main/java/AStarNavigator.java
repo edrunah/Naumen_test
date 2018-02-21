@@ -2,43 +2,37 @@ public class AStarNavigator implements Navigator {
 
     public char[][] searchRoute(char[][] mapArray) {
 
-        //поиск начала и конца
         CharMap map = new CharMap(mapArray);
-        CharMap mapClone = map.clone();
-        Node beginNode = mapClone.getBeginNode();
-        Node endNode = mapClone.getEndNode();
+        Node beginNode = map.getBeginNode();
+        Node endNode = map.getEndNode();
 
         //обход массива методом A*
-        mapClone.setInOpenList(beginNode);
-
+        map.setOpened(beginNode);
         while (endNode.getParentNode() == null) {
-            if (mapClone.listIsEmpty()) {
+            if (map.listIsEmpty()) {
                 return null; // если открытый список пуст, а выход не найден
             }
-            Node currentNode = mapClone.getFromOpenList();
-            mapClone.setClosed(currentNode);
+            Node currentNode = map.getOpened();
+            Point currentPoint = currentNode.getPoint();
+            map.setClosed(currentNode);
             for (int i = 0; i < 4; i++) { // 4 стороны(вверх, вниз, вправо, влево)
-                Point currentPoint = currentNode.getPoint();
                 Point newPoint = currentPoint.turnToSide(i);
-                if (mapClone.isOutOfMap(newPoint)) {
+                if (map.isOutOfMap(newPoint)) {
                     continue;
                 }
-                if (mapClone.isEmptyRoad(newPoint)) {
+                if (map.isEmptyRoad(newPoint)) {
                     Node newOpenNode = new Node(newPoint);
                     newOpenNode.setParentNode(currentNode);
-                    mapClone.calculateDistances(newOpenNode);
-                    mapClone.setInOpenList(newOpenNode);
+                    map.calculateDistances(newOpenNode);
+                    map.setOpened(newOpenNode);
                 }
-                if (mapClone.isEnd(newPoint)) {
+                if (map.isEnd(newPoint)) {
                     endNode.setParentNode(currentNode);
                     break;
                 }
             }
         }
+        return map.getWayArray();
 
-        //заполнение плюсами
-        CharMap mapOfPluses = map.clone();
-        mapOfPluses.buildWay(beginNode, endNode);
-        return mapOfPluses.getArray();
     }
 }

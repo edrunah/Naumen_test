@@ -9,6 +9,8 @@ public class CharMap implements AStarSearchable {
 
     private char[][] array;
 
+    private char[][] arrayClone; // для создания пометок
+
     private Node beginNode;
 
     private Node endNode;
@@ -17,23 +19,11 @@ public class CharMap implements AStarSearchable {
 
     CharMap(char[][] array) {
         this.array = array;
+        arrayClone = clone(array);
         Point beginPoint = this.pointForChar(CharMap.BEGINNING);
         Point endPoint = this.pointForChar(CharMap.END);
         beginNode = new Node(beginPoint);
         endNode = new Node(endPoint);
-    }
-
-    public Point pointForChar(char symbol) {
-        int rows = array.length;
-        int columns = array[0].length;
-        for(int i = 0; i < rows; i++) {
-            for(int j = 0; j < columns; j++) {
-                if (array[i][j] == symbol) {
-                    return new Point(i, j);
-                }
-            }
-        }
-        throw new IllegalArgumentException();
     }
 
     public char[][] getArray() {
@@ -48,46 +38,45 @@ public class CharMap implements AStarSearchable {
         return endNode;
     }
 
-    public CharMap clone() {
-        char[][] basis = this.array;
+    private char[][] clone(char[][] basis) {
         char[][] cloned = new char[basis.length][basis[0].length];
         for (int i = 0; i < basis.length; i++) {
             cloned[i] = basis[i].clone();
         }
-        return new CharMap(cloned);
+        return cloned;
     }
 
     public boolean isOutOfMap(Point point) {
         return point.getX() < 0 || point.getY() < 0
-            || point.getX() > array.length - 1 || point.getY() > array[0].length - 1;
+            || point.getX() > arrayClone.length - 1 || point.getY() > arrayClone[0].length - 1;
 
     }
 
     public boolean isEmptyRoad(Point point) {
-        return this.getCharOnPoint(point) == '.';
+        return arrayClone[point.getX()][point.getY()] == '.';
     }
 
     public boolean isEnd(Point point) {
-        return this.getCharOnPoint(point) == 'X';
+        return arrayClone[point.getX()][point.getY()] == 'X';
     }
 
     @Override
-    public void setInOpenList(Node node) {
+    public void setOpened(Node node) {
         openList.add(node);
         int x = node.getPoint().getX();
         int y = node.getPoint().getY();
-        array[x][y] = 'o';
+        arrayClone[x][y] = 'o';
     }
 
     @Override
-    public Node getFromOpenList() {
+    public Node getOpened() {
         return openList.poll();
     }
 
     public void setClosed(Node node) {
         int x = node.getPoint().getX();
         int y = node.getPoint().getY();
-        array[x][y] = 'c';
+        arrayClone[x][y] = 'c';
     }
 
     @Override
@@ -104,17 +93,28 @@ public class CharMap implements AStarSearchable {
         return openList.isEmpty();
     }
 
-    public void buildWay(Node beginNode, Node endNode) {
+    public char[][] getWayArray() {
+        char[][] way = clone(array);
         Node plusNode = endNode.getParentNode();
         while (plusNode != beginNode) {
             int x = plusNode.getPoint().getX();
             int y = plusNode.getPoint().getY();
-            array[x][y] = '+';
+            way[x][y] = '+';
             plusNode = plusNode.getParentNode();
         }
+        return way;
     }
 
-    private char getCharOnPoint(Point point) {
-        return array[point.getX()][point.getY()];
+    private Point pointForChar(char symbol) {
+        int rows = array.length;
+        int columns = array[0].length;
+        for(int i = 0; i < rows; i++) {
+            for(int j = 0; j < columns; j++) {
+                if (array[i][j] == symbol) {
+                    return new Point(i, j);
+                }
+            }
+        }
+        throw new IllegalArgumentException("Искомый символ не найден");
     }
 }
