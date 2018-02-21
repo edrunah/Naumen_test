@@ -77,7 +77,7 @@ public class CharMap implements AStarSearchable {
         node.setDistances(distanceFromStart, distanceToFinish);
     }
 
-    public boolean listIsEmpty() {
+    public boolean openListIsEmpty() {
         return openList.isEmpty();
     }
 

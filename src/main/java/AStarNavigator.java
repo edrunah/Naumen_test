@@ -6,11 +6,10 @@ public class AStarNavigator implements Navigator {
         Node beginNode = map.getBeginNode();
         Node endNode = map.getEndNode();
 
-        //обход массива методом A*
         map.setOpened(beginNode);
         while (endNode.getParentNode() == null) {
-            if (map.listIsEmpty()) {
-                return null; // если открытый список пуст, а выход не найден
+            if (map.openListIsEmpty()) {
+                return null;
             }
             Node currentNode = map.getOpened();
             Point currentPoint = currentNode.getPoint();

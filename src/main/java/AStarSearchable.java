@@ -6,7 +6,7 @@ public interface AStarSearchable {
 
     public void setClosed(Node node);
 
-    public boolean listIsEmpty();
+    public boolean openListIsEmpty();
 
     public boolean isOutOfMap(Point point);
 

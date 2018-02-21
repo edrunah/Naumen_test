@@ -4,7 +4,7 @@ public class Node implements Comparable<Node>{
 
     private Node parentNode;
 
-    private int distanceFromStart; //Manhattan method
+    private int distanceFromStart; //метод Манхеттена
 
     private int distanceToFinish;
 
