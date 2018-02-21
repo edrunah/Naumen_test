@@ -1,20 +1,16 @@
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class MachuPikchuNavigatorTest {
+public class AStarNavigatorTest {
 
     Navigator navigator;
 
@@ -32,7 +28,7 @@ public class MachuPikchuNavigatorTest {
 
     @Before
     public void setUp() {
-        navigator = new MachuPikchuNavigator();
+        navigator = new AStarNavigator();
     }
 
     @Test

@@ -10,11 +10,8 @@ public class Node implements Comparable<Node>{
 
     private int summaryDistance;
 
-    Node(Point point, int distanceFromStart, int distanceToFinish) {
+    Node(Point point) {
         this.point = point;
-        this.distanceFromStart = distanceFromStart;
-        this.distanceToFinish = distanceToFinish;
-        this.summaryDistance = distanceFromStart + distanceToFinish;
     }
 
     public Point getPoint() {
@@ -31,6 +28,12 @@ public class Node implements Comparable<Node>{
 
     public void setParentNode(Node parentNode) {
         this.parentNode = parentNode;
+    }
+
+    public void setDistances(int distanceFromStart, int distanceToFinish) {
+        this.distanceFromStart = distanceFromStart;
+        this.distanceToFinish = distanceToFinish;
+        this.summaryDistance = this.distanceFromStart + this.distanceToFinish;
     }
 
     @Override

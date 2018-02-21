@@ -1,7 +1,7 @@
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class CharMap implements AStarSearcher{
+public class CharMap implements AStarSearchable {
 
     public static final char BEGINNING = '@';
 
@@ -9,10 +9,18 @@ public class CharMap implements AStarSearcher{
 
     private char[][] array;
 
+    private Node beginNode;
+
+    private Node endNode;
+
     private Queue<Node> openList = new PriorityQueue<>();
 
     CharMap(char[][] array) {
         this.array = array;
+        Point beginPoint = this.pointForChar(CharMap.BEGINNING);
+        Point endPoint = this.pointForChar(CharMap.END);
+        beginNode = new Node(beginPoint);
+        endNode = new Node(endPoint);
     }
 
     public Point pointForChar(char symbol) {
@@ -32,6 +40,14 @@ public class CharMap implements AStarSearcher{
         return array;
     }
 
+    public Node getBeginNode() {
+        return beginNode;
+    }
+
+    public Node getEndNode() {
+        return endNode;
+    }
+
     public CharMap clone() {
         char[][] basis = this.array;
         char[][] cloned = new char[basis.length][basis[0].length];
@@ -41,7 +57,7 @@ public class CharMap implements AStarSearcher{
         return new CharMap(cloned);
     }
 
-    public boolean outOfMap(Point point) {
+    public boolean isOutOfMap(Point point) {
         return point.getX() < 0 || point.getY() < 0
             || point.getX() > array.length - 1 || point.getY() > array[0].length - 1;
 
@@ -56,7 +72,7 @@ public class CharMap implements AStarSearcher{
     }
 
     @Override
-    public void addInOpenList(Node node) {
+    public void setInOpenList(Node node) {
         openList.add(node);
         int x = node.getPoint().getX();
         int y = node.getPoint().getY();
@@ -64,7 +80,7 @@ public class CharMap implements AStarSearcher{
     }
 
     @Override
-    public Node pollFromOpenList() {
+    public Node getFromOpenList() {
         return openList.poll();
     }
 
@@ -74,6 +90,16 @@ public class CharMap implements AStarSearcher{
         array[x][y] = 'c';
     }
 
+    @Override
+    public void calculateDistances(Node node) {
+        int distanceFromStart = node.getParentNode().getDistanceFromStart() + 1;
+        Point endPoint = endNode.getPoint();
+        Point thisPoint = node.getPoint();
+        int distanceToFinish = Math.abs(endPoint.getX() - thisPoint.getX())
+            + Math.abs(endPoint.getY() - thisPoint.getY());
+        node.setDistances(distanceFromStart, distanceToFinish);
+    }
+
     public boolean listIsEmpty() {
         return openList.isEmpty();
     }
@@ -81,7 +107,9 @@ public class CharMap implements AStarSearcher{
     public void buildWay(Node beginNode, Node endNode) {
         Node plusNode = endNode.getParentNode();
         while (plusNode != beginNode) {
-            array[plusNode.getPoint().getX()][plusNode.getPoint().getY()] = '+';
+            int x = plusNode.getPoint().getX();
+            int y = plusNode.getPoint().getY();
+            array[x][y] = '+';
             plusNode = plusNode.getParentNode();
         }
     }
