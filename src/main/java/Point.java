@@ -4,9 +4,12 @@ public class Point {
 
     private int y;
 
-    Point(int x, int y) {
+    private char sign;
+
+    Point(int x, int y, char sign) {
         this.x = x;
         this.y = y;
+        this.sign = sign;
     }
 
     public int getX() {
@@ -17,11 +20,12 @@ public class Point {
         return y;
     }
 
-    public Point turnToSide(int i) {
-        int[] dx = {-1, 1, 0,  0};
-        int[] dy = { 0, 0, 1, -1};
-        int newX = this.x + dx[i];
-        int newY = this.y + dy[i];
-        return new Point(newX, newY);
+    public char getSign() {
+        return sign;
     }
+
+    public void setSign(char sign) {
+        this.sign = sign;
+    }
+
 }
