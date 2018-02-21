@@ -26,24 +26,12 @@ public class CharMap implements AStarSearchable {
         endNode = new Node(endPoint);
     }
 
-    public char[][] getArray() {
-        return array;
-    }
-
     public Node getBeginNode() {
         return beginNode;
     }
 
     public Node getEndNode() {
         return endNode;
-    }
-
-    private char[][] clone(char[][] basis) {
-        char[][] cloned = new char[basis.length][basis[0].length];
-        for (int i = 0; i < basis.length; i++) {
-            cloned[i] = basis[i].clone();
-        }
-        return cloned;
     }
 
     public boolean isOutOfMap(Point point) {
@@ -103,6 +91,14 @@ public class CharMap implements AStarSearchable {
             plusNode = plusNode.getParentNode();
         }
         return way;
+    }
+
+    private char[][] clone(char[][] basis) {
+        char[][] cloned = new char[basis.length][basis[0].length];
+        for (int i = 0; i < basis.length; i++) {
+            cloned[i] = basis[i].clone();
+        }
+        return cloned;
     }
 
     private Point pointForChar(char symbol) {

@@ -14,7 +14,7 @@ public class AStarNavigatorTest {
 
     Navigator navigator;
 
-    private void printArr(char[][] arr) {
+    private void printArray(char[][] arr) {
         int rows = arr.length;
         int columns = arr[0].length;
         for(int i = 0; i < rows; i++) {
@@ -32,22 +32,6 @@ public class AStarNavigatorTest {
     }
 
     @Test
-    public void easyRoute() {
-        char[][] easy = {
-            {'.', '.', '.', '.', '@'},
-            {'.', '#', '#', '#', '#'},
-            {'.', '.', '.', '.', '.'},
-            {'#', '#', '#', '#', '.'},
-            {'X', '.', '.', '.', '.'}
-        };
-        printArr(easy);
-
-        char[][] route = navigator.searchRoute(easy);
-
-        printArr(route);
-    }
-
-    @Test
     public void noRoute() {
         char[][] no = {
             {'.', '.', '.', '.', '@'},
@@ -56,11 +40,41 @@ public class AStarNavigatorTest {
             {'#', '#', '#', '#', '.'},
             {'X', '.', '.', '.', '.'}
         };
-        printArr(no);
+        printArray(no);
 
         char[][] route = navigator.searchRoute(no);
 
         assertNull(route);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void noEnd() {
+        char[][] noEnd = {
+            {'.', '.', '.', '.', '@'},
+            {'#', '#', '#', '#', '#'},
+            {'.', '.', '.', '.', '.'},
+            {'#', '#', '#', '#', '.'},
+            {'.', '.', '.', '.', '.'}
+        };
+        printArray(noEnd);
+
+        char[][] route = navigator.searchRoute(noEnd);
+    }
+
+    @Test
+    public void easyRoute() {
+        char[][] easy = {
+            {'.', '.', '.', '.', '@'},
+            {'.', '#', '#', '#', '#'},
+            {'.', '.', '.', '.', '.'},
+            {'#', '#', '#', '#', '.'},
+            {'X', '.', '.', '.', '.'}
+        };
+        printArray(easy);
+
+        char[][] route = navigator.searchRoute(easy);
+
+        printArray(route);
     }
 
     @Test
@@ -72,11 +86,11 @@ public class AStarNavigatorTest {
             {'#', '.', '#', '#', '.'},
             {'X', '.', '.', '.', '.'}
         };
-        printArr(manyWays);
+        printArray(manyWays);
 
         char[][] route = navigator.searchRoute(manyWays);
 
-        printArr(route);
+        printArray(route);
     }
 
     @Test
@@ -88,10 +102,10 @@ public class AStarNavigatorTest {
             {'.', 'X', '.', '.', '.'},
             {'.', '#', '.', '.', '.'}
         };
-        printArr(clearField);
+        printArray(clearField);
 
         char[][] route = navigator.searchRoute(clearField);
-        printArr(route);
+        printArray(route);
     }
 
     @Test
@@ -105,10 +119,10 @@ public class AStarNavigatorTest {
             {'.', '#', '.', '#', '.'},
             {'.', '.', '.', '.', '.'}
         };
-        printArr(cross);
+        printArray(cross);
 
         char[][] route = navigator.searchRoute(cross);
-        printArr(route);
+        printArray(route);
     }
 
     @Test
@@ -127,19 +141,19 @@ public class AStarNavigatorTest {
             {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '@', '#', '.'}
 
         };
-        printArr(snake);
+        printArray(snake);
 
         char[][] route = navigator.searchRoute(snake);
-        printArr(route);
+        printArray(route);
     }
 
     @Ignore
     @Test
     public void generateRandomMap() throws IOException {
         char[][] map = new RandomMap().generateMap();
-        printArr(map);
+        printArray(map);
         char[][] route = navigator.searchRoute(map);
-        printArr(route);
+        printArray(route);
         if (route != null) {
             Writer wr = new FileWriter("randomMap.txt");
             for (int i = 0; i < map.length; i++) {
