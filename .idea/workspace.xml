@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="855ebce5-f826-4194-8991-5a9411ec4cd4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AStarNavigator.java" afterPath="$PROJECT_DIR$/src/main/java/AStarNavigator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CharMap.java" afterPath="$PROJECT_DIR$/src/main/java/CharMap.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AStarNavigatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/AStarNavigatorTest.java" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/AStarNavigatorTest.class" afterPath="$PROJECT_DIR$/target/test-classes/AStarNavigatorTest.class" />
-    </list>
+    <list default="true" id="855ebce5-f826-4194-8991-5a9411ec4cd4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AStarNavigator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AStarNavigator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/AStarNavigator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -55,57 +49,6 @@
             <state relative-caret-position="165">
               <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CharMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CharMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#731#732#0" expanded="true" />
-                <element signature="e#763#764#0" expanded="true" />
-                <element signature="e#795#796#0" expanded="true" />
-                <element signature="e#825#826#0" expanded="true" />
-                <element signature="e#1182#1183#0" expanded="true" />
-                <element signature="e#1250#1251#0" expanded="true" />
-                <element signature="e#1495#1496#0" expanded="true" />
-                <element signature="e#1533#1534#0" expanded="true" />
-                <element signature="e#2165#2166#0" expanded="true" />
-                <element signature="e#2206#2207#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Point.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-              <folding>
-                <element signature="e#157#158#0" expanded="true" />
-                <element signature="e#181#182#0" expanded="true" />
-                <element signature="e#206#207#0" expanded="true" />
-                <element signature="e#230#231#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AStarNavigatorTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/AStarNavigatorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-977">
-              <caret line="77" column="5" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="77" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -183,8 +126,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Node.java" />
         <option value="$PROJECT_DIR$/src/main/java/AStarSearchable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Point.java" />
-        <option value="$PROJECT_DIR$/src/test/java/AStarNavigatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/CharMap.java" />
+        <option value="$PROJECT_DIR$/src/test/java/AStarNavigatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/AStarNavigator.java" />
       </list>
     </option>
@@ -523,7 +466,7 @@
       <workItem from="1518882829384" duration="4985000" />
       <workItem from="1519104083371" duration="6015000" />
       <workItem from="1519124339681" duration="398000" />
-      <workItem from="1519126860202" duration="21751000" />
+      <workItem from="1519126860202" duration="22088000" />
     </task>
     <servers />
   </component>
@@ -560,7 +503,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81328000" />
+    <option name="totallyTimeSpent" value="81665000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="7" y="23" width="1414" height="820" extended-state="0" />
@@ -575,7 +518,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29144385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27272728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1300,31 +1243,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding>
-            <element signature="e#157#158#0" expanded="true" />
-            <element signature="e#181#182#0" expanded="true" />
-            <element signature="e#206#207#0" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/RandomMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="10" lean-forward="false" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1350,11 +1272,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AStarSearchable.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/AStarNavigatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-418">
+          <caret line="146" column="26" lean-forward="true" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#755#756#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="e#157#158#0" expanded="true" />
+            <element signature="e#181#182#0" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1378,23 +1317,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AStarNavigator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/AStarSearchable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/AStarNavigatorTest.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-977">
-          <caret line="77" column="5" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="77" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="30" column="10" lean-forward="false" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AStarNavigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
